@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ZhiHuNews</string>
+    <string name="first_page">首页</string>
+    <string name="close_name">今日热点</string>
 </resources>
