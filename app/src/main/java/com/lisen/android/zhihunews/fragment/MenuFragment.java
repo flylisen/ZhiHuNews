@@ -14,10 +14,16 @@ import com.lisen.android.zhihunews.R;
 /**
  * Created by Administrator on 2016/7/1.
  */
-public class MenuFragment extends Fragment {
+public class MenuFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = initView(inflater, container, savedInstanceState);
+        return view;
+    }
+
+    @Override
+    protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.menu, container, false);
         return view;
     }
