@@ -1,11 +1,12 @@
 package com.lisen.android.zhihunews.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Administrator on 2016/7/2.
  */
-public class StoryEntry {
+public class StoryEntry  implements Serializable{
     public String getGa_prefix() {
         return ga_prefix;
     }

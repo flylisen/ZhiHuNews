@@ -61,15 +61,7 @@ public class FunctionActivity extends AppCompatActivity {
                 Log.d("TAG", responseString);
            }
        });
-       /* Gson gson = new Gson();
-        java.lang.reflect.Type type = new TypeToken<Latest>(){}.getType();
-        Latest latest = gson.fromJson(result, type);
-        System.out.println(latest.toString());
-        List<TopStoryEntry> topStoryEntryList = latest.getTop_stories();
-        System.out.println(topStoryEntryList.get(0).getTitle());
-       System.out.println(topStoryEntryList.get(0).getImage());
-        tv.setText(topStoryEntryList.get(0).getTitle());
-        mImageLoader.displayImage(topStoryEntryList.get(0).getImage(), iv);*/
+
     }
 
 

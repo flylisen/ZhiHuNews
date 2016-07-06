@@ -25,7 +25,7 @@ import java.util.List;
  * Created by Administrator on 2016/7/3.
  */
 public class Kanner extends FrameLayout {
-
+   // TODO: 2016/7/6 添加轮播动画
     private ImageLoader mImageLoader;
     private DisplayImageOptions mOptions;
     private List<TopStoryEntry> mListTopStoryEntry;

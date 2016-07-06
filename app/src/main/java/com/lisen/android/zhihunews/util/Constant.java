@@ -8,5 +8,7 @@ public class Constant {
     public static final String THEME = "theme/";
     public static final int BASE_COLUMN = 100000000;
     public static final String LATEST_NEWS = "news/latest";
+    public static final String BEFORE = "news/before/";
+    public static final String CONTENT = "news/";
     public static final int LATEST_COLUMN = Integer.MAX_VALUE;
 }

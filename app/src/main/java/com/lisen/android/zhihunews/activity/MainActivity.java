@@ -2,6 +2,7 @@ package com.lisen.android.zhihunews.activity;
 
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,7 +24,9 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     private DrawerLayout mDrawerLayout;
     private CacheDbHelper mCacheDbHelper;
-    private ImageLoader mImageLoader;
+    private SwipeRefreshLayout mSR;
+    private String curId = "";
+    //private ImageLoader mImageLoader;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private void loadLatest() {
         getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, new MainNewsFragment(),
                "latest").commit();
+        curId = "latest";
     }
 
     private void initViews() {
@@ -49,10 +53,35 @@ public class MainActivity extends AppCompatActivity {
                 mDrawerLayout, mToolbar, R.string.close_name, R.string.close_name);
         mDrawerLayout.setDrawerListener(toggle);
         toggle.syncState();
+        mSR = (SwipeRefreshLayout) findViewById(R.id.refresh_mainActivity);
+        mSR.setColorSchemeColors(android.R.color.holo_blue_light,
+                android.R.color.holo_green_dark,
+                android.R.color.holo_orange_dark);
+        mSR.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                replaceFragment();
+                mSR.setRefreshing(false);
+            }
+        });
+    }
+
+    private void replaceFragment() {
+        if (curId.equals("latest")) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, new MainNewsFragment(),
+                    "latest").commit();
+        } else {
+            // do nothing;
+        }
+
     }
 
     public CacheDbHelper getCacheDbHelper() {
         return mCacheDbHelper;
+    }
+
+    public void setSwipeFreshEnalbe(boolean enalbe) {
+        mSR.setEnabled(enalbe);
     }
 
     public boolean isContect() {
