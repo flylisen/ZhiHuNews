@@ -12,6 +12,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/tv_title"
             android:layout_toLeftOf="@id/iv_title"
             android:text="如何看待当下这种越来越普遍的“沉默”人格？"
             android:padding="5dp"

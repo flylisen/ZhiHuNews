@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         loadLatest();
     }
 
-    private void loadLatest() {
+    public void loadLatest() {
         getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, new MainNewsFragment(),
                "latest").commit();
         curId = "latest";
@@ -88,5 +88,11 @@ public class MainActivity extends AppCompatActivity {
         return HttpUtils.isNetworkConnected(this);
     }
 
+    public void setCurId(String id) {
+        curId = id;
+    }
 
+    public void closeMenu() {
+        mDrawerLayout.closeDrawers();
+    }
 }

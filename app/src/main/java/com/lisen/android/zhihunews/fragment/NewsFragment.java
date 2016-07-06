@@ -41,6 +41,7 @@ public class NewsFragment extends BaseFragment {
     private TextView mTvTitle;
 
     public NewsFragment(String urlId) {
+
         this.urlId = urlId;
     }
     @Override
@@ -60,7 +61,7 @@ public class NewsFragment extends BaseFragment {
     public void initData() {
         if (HttpUtils.isNetworkConnected(mMainActivity)) {
             //发起请求
-            HttpUtils.get(Constant.THEME + urlId, new TextHttpResponseHandler() {
+            HttpUtils.get(Constant.THEME_ENEMENT + urlId, new TextHttpResponseHandler() {
                 @Override
                 public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
 
@@ -69,19 +70,21 @@ public class NewsFragment extends BaseFragment {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, String responseString) {
                     //保存进数据库
-                    SQLiteDatabase db = ((MainActivity) mMainActivity).getCacheDbHelper().getWritableDatabase();
+                   /* SQLiteDatabase db = ((MainActivity) mMainActivity).getCacheDbHelper().getWritableDatabase();
                     db.execSQL("replace into CacheList (date, json) values (" +
                             (Constant.BASE_COLUMN + Integer.parseInt(urlId)) + "," +
                                 responseString +
                             ")");
-                    db.close();
+                    db.close();*/
+                    // TODO: 2016/7/6 存进数据库 
                     parseJson(responseString);
 
                 }
             });
         } else {
+            // TODO: 2016/7/6 从数据库中查询 
             //从数据库中查询缓存
-            SQLiteDatabase db = ((MainActivity) mMainActivity).getCacheDbHelper().getWritableDatabase();
+           /* SQLiteDatabase db = ((MainActivity) mMainActivity).getCacheDbHelper().getWritableDatabase();
             Cursor cursor = db.rawQuery("select * from CacheList where date = " +
                     (Constant.BASE_COLUMN + Integer.parseInt(urlId)), null);
             if (cursor.moveToFirst()) {
@@ -89,7 +92,7 @@ public class NewsFragment extends BaseFragment {
                 parseJson(json);
             }
             cursor.close();
-            db.close();
+            db.close();*/
         }
 
     }

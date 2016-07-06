@@ -97,7 +97,7 @@ public class MainNewsFragment extends BaseFragment {
     private void loadMore(String url) {
         mIsLoading = true;
         // TODO: 2016/7/6 加进网络是否通的判断 
-        if (true) {
+        if (HttpUtils.isNetworkConnected(mMainActivity)) {
             
             //从网络中加载
             HttpUtils.get(url, new TextHttpResponseHandler() {
